@@ -12,15 +12,16 @@ from tqdm import tqdm
 #Selection of the model to encode the tweets ahead of training the classifier : 
 
 #model_name = "sentence-transformers/all-MiniLM-L6-v2"
-model_name = "vinai/bertweet-base" #This one gave the best results
+#model_name = "vinai/bertweet-base" #This one gave the best results
 #model_name = "distilbert-base-uncased"
 #model_name = "cardiffnlp/twitter-roberta-base-sentiment"
+model_name = "glove"
 
 #Selection of the classifier to use : 
 
 #classifier_type = "LogisticRegression" 
-#classifier_type = "LinearRegression"
-classifier_type = "MLPClassifier" #This one gave the best results
+classifier_type = "LinearRegression"
+#classifier_type = "MLPClassifier" #This one gave the best results
 
 model_id = model_name.split("/")[-1]
 filename = "features_all_{}.npy".format(model_id)
