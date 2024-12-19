@@ -31,7 +31,7 @@ You can choose from pre-trained models such as:
 
 Sentence-transformers models use the `SentenceTransformer` library, while other models rely on Hugging Face’s `AutoTokenizer` and `AutoModel`.
 
-#### Outputs:
+#### Output:
 
 1. A .npy file containing the feature matrix (embeddings with word count):
    features_all_<model_name>.npy
@@ -67,7 +67,7 @@ The `classifier_optimization.py` script trains and evaluates different classifie
 Example : 
 model_name = "vinai/bertweet-base" 
 classifier = "MLPClassifier"
-#### Outputs
+#### Output:
 
 - Best hyperparameters for the selected classifier.
 - Test set performance metrics (F1 score and accuracy).
@@ -88,7 +88,7 @@ The `fine_tuning.py` script fine-tunes pre-trained language models (e.g., `vinai
 
 The script adapts the model to Twitter-specific data through transfer learning, leveraging Hugging Face’s `Trainer`. After training, the fine-tuned model and tokenizer are saved in a directory, and evaluation metrics are displayed.
 
-**Expected Output:**
+#### Output:
 
 The fine-tuned model and tokenizer are saved for future use:
 ./fine_tuned_<model_name>
@@ -123,3 +123,37 @@ A `.csv` file is saved in the `data/` directory (e.g., `data/submission_bertweet
 - **Prediction**: The predicted sentiment (`1` for positive, `-1` for negative`).
 
 The `helpers.py` file is required to properly format the submission file.
+
+
+## Additionnal files 
+
+
+### Data Folder
+
+The `data` folder contains the `twitter-dataset`, which includes:
+
+- **`train_pos.txt`**: Contains tweets labeled as positive.
+- **`train_neg.txt`**: Contains tweets labeled as negative.
+
+These files are used for embedding generation and for the fine tuning.
+
+- **`test_data.txt`**: Contains tweets for which sentiment predictions need to be generated.
+
+This file is used to create submission.
+
+### Data Exploration
+
+The `data_exploration` folder contains:
+
+1. **`data_exploration.ipynb`**:
+   - A Jupyter Notebook for analyzing the dataset (e.g., class balance, tweet length).
+   - Calls functions from `data_exploration_helpers.py`.
+
+2. **`data_exploration_helpers.py`**:
+   - A module with helper functions used in the notebook.
+
+Use the notebook to interactively explore and understand the dataset.
+
+### Provided Folder
+
+The `Provided` folder contains files provided by the professor to facilitate embedding generation using GloVe. 
