@@ -97,7 +97,7 @@ elif classifier_type == "MLPClassifier":
         def forward(self, x):
             return self.model(x)
 
-    hidden_layer_sizes = [50, 100, 200] 
+    hidden_layer_sizes = [50, 100, 200,400,800] 
     learning_rates = [0.00001,0.0001, 0.001, 0.01, 0.1, 1] 
     epoch_values = [100] 
 
