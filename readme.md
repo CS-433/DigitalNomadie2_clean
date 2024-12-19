@@ -1,31 +1,31 @@
 # Sentiment Analysis on Tweets
 
-This project aims to predict the sentiment of tweets, specifically whether they express positive or negative sentiment, using machine learning and natural language processing (NLP) techniques. By leveraging pre-trained word embeddings and advanced language models, the goal is to classify tweets based on their sentiment while addressing the unique challenges posed by the informal and noisy nature of Twitter data.
+This project aims to classify tweets, specifically whether they contain a positive ":)" or negative smiley ":(", using machine learning and natural language processing (NLP) techniques. By leveraging pre-trained word embeddings and advanced language models, the goal is to classify tweets based on their sentiment while addressing the unique challenges posed by the informal and noisy nature of Twitter data.
 
 ## Workflow Overview
 
 The project is organized into four main stages:
 
 1. **Embedding Generation and Preprocessing**:
-   - The `save_embeddings.py` script generates vector representations for tweets using models like GloVe, DistilBERT, and `all-MiniLM-L6-v2`. It transforms tweets into fixed-length feature vectors and saves them for model training.
+   - The `save_embeddings.py` script generates vector representations for tweets using models like DistilBERT, and `all-MiniLM-L6-v2`. It transforms tweets into fixed-length feature vectors and saves them for model training.
 
 2. **Model Training and Evaluation**:
-   - The `classifier_optimization.py` script trains and evaluates machine learning models (e.g., logistic regression, support vector machines) on the generated embeddings to classify tweets as positive or negative. It also includes hyperparameter tuning for performance optimization.
+   - The `classifier_optimization.py` script trains and evaluates classifying models (e.g., logistic regression, multi-layer perceptron) on the generated embeddings to classify tweets as positive or negative. It also includes hyperparameter tuning for performance optimization.
 
 3. **Fine-Tuning and Advanced Evaluation**:
-   - The `fine_tuning.py` script fine-tunes the `twitter-roberta-base-sentiment` model, a pre-trained language model specialized for Twitter sentiment analysis. Fine-tuning enhances its performance for classifying sentiment in Twitter-specific text.
+   - The `fine_tuning.py` script performs the fine-tuning of an array of LLMs, including `bertwitter-base`, a pre-trained language model specialized for Twitter sentiment analysis. Fine-tuning enhances its performance for classifying sentiment in Twitter-specific text.
 
 4. **Generate Submission File**:
    - The final script `run.py` generates predictions on the test dataset using the fine-tuned model and creates a `.csv` submission file compatible with evaluation platforms.
 
 ### Step 1: Generate tweets embeddings
 
-The `save_embeddings.py` script is responsible for processing raw tweet data, extracting features using pre-trained embedding models, and saving the resulting feature matrices and labels. These embeddings serve as the input for training and evaluating classifiers in subsequent steps.
+The `save_embeddings.py` script is responsible for processing raw tweet data, extracting features using pre-trained embedding models, and saving the resulting feature matrices and labels. These embeddings, combined to the length of the tweet, serve as the input for training and evaluating classifiers in subsequent steps.
 
 #### How the Script Works
 
 Embedding Model Selection:
-You can choose one of the following pre-trained models to generate embeddings:
+You can choose  among the following pre-trained models to generate embeddings (note that the script is also compatible with other LLMs for further exploration) :
 - `sentence-transformers/all-MiniLM-L6-v2`
 - `vinai/bertweet-base`
 - `distilbert-base-uncased`
@@ -83,8 +83,8 @@ The feature matrix and labels are saved as .npy files for use in the classifier 
 
 Example Results:
 Using the vinai/bertweet-base model, the script outputs:
-- features_all_bertweet-base.npy: A matrix of tweet embeddings with additional word count features.
-- labels_all_bertweet-base.npy: Labels corresponding to the sentiment of the tweets.
+- features_all_bertweet-base.npy: A matrix of tweet embeddings with additional word count feature.
+- labels_all_bertweet-base.npy: Labels corresponding to the smiley present in the tweets.
 
 This step generates the necessary input for training classifiers, allowing you to experiment with various models and configurations in the subsequent steps.
 
@@ -130,7 +130,7 @@ The script supports the following classifiers:
    - Depending on the selected classifier, the script applies the appropriate training process:
      - Logistic Regression: Performs grid search using `GridSearchCV` to find the best hyperparameters and trains the model.
      - Linear Regression: Directly fits the model and thresholds the outputs for classification.
-     - MLP Classifier: Implements a grid search for optimal configurations of hidden layer size, learning rate, and epochs.
+     - MLP Classifier: Implements a grid search for optimal configurations of hidden layer size and learning rate,.
 
 3. **Evaluate the Model:**
    - Each classifier is evaluated on the test set using accuracy and F1 score.
