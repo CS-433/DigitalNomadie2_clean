@@ -7,20 +7,24 @@ This project aims to classify tweets, specifically whether they contain a positi
 The project is organized into four main stages:
 
 1. **Embedding Generation and Preprocessing**:
-   - The `save_embeddings.py` script generates vector representations for tweets using models like DistilBERT, and `all-MiniLM-L6-v2`. It transforms tweets into fixed-length feature vectors and saves them for model training.
+   - The `save_embeddings.py` script generates vector representations for tweets using models like DistilBERT and `all-MiniLM-L6-v2`. It transforms tweets into fixed-length feature vectors and saves them for model training.
+   - For GloVe embeddings, the process differs from other models. The script `create_features_glove.py` is used to generate GloVe-based embeddings, leveraging resources provided in the `Provided` folder, (the instruction ar in the `README.md` provided in this folder).
 
 2. **Model Training and Evaluation**:
    - The `classifier_optimization.py` script trains and evaluates classifying models (e.g., logistic regression, multi-layer perceptron) on the generated embeddings to classify tweets as positive or negative. It also includes hyperparameter tuning for performance optimization.
 
 3. **Fine-Tuning and Advanced Evaluation**:
-   - The `fine_tuning.py` script performs the fine-tuning of an array of LLMs, including `bertwitter-base`, a pre-trained language model specialized for Twitter sentiment analysis. Fine-tuning enhances its performance for classifying sentiment in Twitter-specific text.
+   - The `fine_tuning.py` script performs the fine-tuning of an array of LLMs, including `bertweet-base`, a pre-trained language model specialized for Twitter sentiment analysis. Fine-tuning enhances its performance for classifying sentiment in Twitter-specific text.
 
 4. **Generate Submission File**:
    - The final script `run.py` generates predictions on the test dataset using the fine-tuned model and creates a `.csv` submission file compatible with evaluation platforms.
 
+---
+
 ### Step 1: Generate Tweet Embeddings
 
-The `save_embeddings.py` script processes raw tweet data, extracts features using pre-trained embedding models, and saves the results for training and evaluation. The output is a feature matrix enriched with the tweet length (word count) as an additional feature.
+- The `save_embeddings.py` script processes raw tweet data, extracts features using pre-trained embedding models, and saves the results for training and evaluation. The output is a feature matrix enriched with the tweet length (word count) as an additional feature.
+- For GloVe embeddings, the `create_features_glove.py` script must be used. This script utilizes the GloVe model provided in the `Provided` folder to generate embeddings tailored to the dataset.
 
 #### Model Selection:
 You can choose from pre-trained models such as:
@@ -154,6 +158,4 @@ The `data_exploration` folder contains:
 
 Use the notebook to interactively explore and understand the dataset.
 
-### Provided Folder
-
-The `Provided` folder contains files provided by the professor to facilitate embedding generation using GloVe. 
+### 
