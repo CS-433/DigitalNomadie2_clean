@@ -1,4 +1,4 @@
-# Sentiment Analysis on Tweets
+# Harnessing Transformer Models for Superior Performance in Binary Classification for Twitter
 
 This project aims to classify tweets, specifically whether they contain a positive ":)" or negative smiley ":(", using machine learning and natural language processing (NLP) techniques. By leveraging pre-trained word embeddings and advanced language models, the goal is to classify tweets based on their sentiment while addressing the unique challenges posed by the informal and noisy nature of Twitter data.
 
@@ -136,10 +136,12 @@ The `helpers.py` file is required to properly format the submission file.
 
 The `data` folder contains the `twitter-dataset`, which includes:
 
-- **`train_pos.txt`**: Contains tweets labeled as positive.
-- **`train_neg.txt`**: Contains tweets labeled as negative.
+- **`train_pos.txt`**: Contains 10% tweets labeled as positive.
+- **`train_neg.txt`**: Contains 10% tweets labeled as negative.
+- **`train_pos_full.txt`**: Contains tweets labeled as positive.
+- **`train_neg_full.txt`**: Contains tweets labeled as negative.
 
-These files are used for embedding generation and for the fine tuning.
+These files are used for embedding generation and for the fine tuning. The two full ones aren't in the Git repository because they are too large but available in the AIcrowd ressources.
 
 - **`test_data.txt`**: Contains tweets for which sentiment predictions need to be generated.
 
