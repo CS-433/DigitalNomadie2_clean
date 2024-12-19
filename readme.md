@@ -22,7 +22,7 @@ The project is organized into four main stages:
    - The `classifier_optimization.py` script trains and evaluates classifying models (e.g., logistic regression, multi-layer perceptron) on the generated embeddings to classify tweets as positive or negative. It also includes hyperparameter tuning for performance optimization.
 
 3. **Fine-Tuning and Advanced Evaluation**:
-   - The `fine_tuning.py` script performs the fine-tuning of an array of LLMs, including `bertweet-base`, a pre-trained language model specialized for Twitter sentiment analysis. Fine-tuning enhances its performance for classifying sentiment in Twitter-specific text.
+   - The `fine_tuning.py` script performs the fine-tuning of an array of LLMs, including `bertweet-base`, a pre-trained language model specialized for Twitter. Fine-tuning enhances its performance for our specific classification problem.
 
 4. **Generate Submission File**:
    - The final script `run.py` generates predictions on the test dataset using the fine-tuned model and creates a `.csv` submission file compatible with evaluation platforms.
@@ -96,7 +96,7 @@ This modular design allows you to experiment with different combinations of embe
 
 ### Step 3: Fine-Tune the Pre-trained Model
 
-The `fine_tuning.py` script fine-tunes pre-trained language models (e.g., `vinai/bertweet-base`, `twitter-roberta-base-sentiment`) for tweet sentiment classification. It uses positive (`train_pos_full.txt`) and negative (`train_neg_full.txt`) tweets, assigns labels (`1` for positive, `-1` for negative), and splits the data into training and evaluation sets.
+The `fine_tuning.py` script fine-tunes pre-trained language models (e.g., `vinai/bertweet-base`, `twitter-roberta-base-sentiment`) for our specific text classification problem. It uses positive (`train_pos_full.txt`) and negative (`train_neg_full.txt`) tweets, assigns labels (`1` for positive, `-1` for negative), and splits the data into training and evaluation sets.
 
 The script adapts the model to Twitter-specific data through transfer learning, leveraging Hugging Face’s `Trainer`. After training, the fine-tuned model and tokenizer are saved in a directory, and evaluation metrics are displayed.
 
@@ -122,8 +122,8 @@ The `generate_submission.py` script generates sentiment predictions for tweets i
 2. **Predict Sentiment**:
    - Tweets from `test_data.txt` are tokenized and processed by the model.
    - Predictions are based on the computed probabilities:
-     - `1` for positive sentiment.
-     - `-1` for negative sentiment.
+     - `1` for positive smiley.
+     - `-1` for negative smiley.
 
 3. **Create Submission File**:
    - Each tweet is assigned a unique ID starting from 1.
@@ -132,7 +132,7 @@ The `generate_submission.py` script generates sentiment predictions for tweets i
 #### Output:
 A `.csv` file is saved in the `data/` directory (e.g., `data/submission_bertweet-base.csv`) containing:
 - **Id**: The unique ID of each tweet.
-- **Prediction**: The predicted sentiment (`1` for positive, `-1` for negative`).
+- **Prediction**: The predicted smiley (`1` for positive, `-1` for negative`).
 
 The `helpers.py` file is required to properly format the submission file.
 
@@ -151,7 +151,7 @@ The `data` folder contains the `twitter-dataset`, which includes:
 
 These files are used for embedding generation and for the fine tuning. The two full ones aren't in the Git repository because they are too large but available in the AIcrowd ressources.
 
-- **`test_data.txt`**: Contains tweets for which sentiment predictions need to be generated.
+- **`test_data.txt`**: Contains tweets for which smiley predictions need to be generated.
 
 This file is used to create submission.
 
