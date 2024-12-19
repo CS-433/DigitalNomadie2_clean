@@ -2,6 +2,14 @@
 
 This project aims to classify tweets, specifically whether they contain a positive ":)" or negative smiley ":(", using machine learning and natural language processing (NLP) techniques. By leveraging pre-trained word embeddings and advanced language models, the goal is to classify tweets based on their sentiment while addressing the unique challenges posed by the informal and noisy nature of Twitter data.
 
+## Getting Started
+
+Before running any scripts, ensure all dependencies are installed by running `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+
 ## Workflow Overview
 
 The project is organized into four main stages:
@@ -158,4 +166,5 @@ The `data_exploration` folder contains:
 
 Use the notebook to interactively explore and understand the dataset.
 
-### 
+### `vocab_cut.txt`
+The `vocab_cut.txt` file is specifically used during GloVe embedding generation and for data exploration tasks.
